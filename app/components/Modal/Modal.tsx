@@ -1,6 +1,7 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
+import Button from '../Button/Button';
 
 interface ModalProps {
     isOpen?:boolean;
@@ -9,15 +10,15 @@ interface ModalProps {
     title?:string;
     body?:React.ReactElement;
     footer?:React.ReactElement;
-    actionlabel?:string;
+    actionlabel:string;
     disabled?:boolean;
     secondaryAction?:()=>void;
-    secondaryLabel?:string;
+    secondaryActionLabel?:string;
 }
 
 export default function Modal(props:ModalProps) {
   
-    const {isOpen,onClose,onSubmit,title,body,footer,actionlabel,disabled,secondaryAction,secondaryLabel} = props
+    const {isOpen,onClose,onSubmit,title,body,footer,actionlabel,disabled=false,secondaryAction,secondaryActionLabel} = props
 
     const [showModal,setShowModal] = useState(isOpen)
 
@@ -53,8 +54,8 @@ export default function Modal(props:ModalProps) {
       [disabled,secondaryAction],
     )
 
-    if (!open) {
-        return ;
+    if (!isOpen) {
+        return null;
     }
     
 
@@ -76,7 +77,21 @@ export default function Modal(props:ModalProps) {
                         {body}
                     </div>    
                     <div className='flex felx-co gap-2 p-6'>
-                        <div className='flex flex-row items-center gap-4'></div>
+                        <div className='flex flex-row items-center gap-4'>
+                            {secondaryAction && secondaryActionLabel && 
+                            <Button 
+                                outline
+                                disabled={disabled}
+                                label={secondaryActionLabel}
+                                onClick={handleSecondaryAction}
+                        />}
+                          <Button 
+                                disabled={disabled}
+                                label={actionlabel}
+                                onClick={handleSubmit}
+                                small={false}
+                        />
+                        </div>
                     </div>
                 </div>                
             </div>

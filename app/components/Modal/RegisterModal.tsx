@@ -7,6 +7,7 @@ import {useState,useCallback} from 'react'
 import { FieldValues,SubmitHandler,useForm } from 'react-hook-form'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
+import Heading from '../Common/Heading'
 
 export default function RegisterModal() {
   
@@ -29,6 +30,13 @@ export default function RegisterModal() {
     .finally(()=>setLoading(false))
    }     
 
+
+   const bodyContent = (
+    <div className='flex flex-col gap-4'>
+        <Heading title='Welcome to Airbnb' subTitle='Create an account' center />
+    </div>
+   )
+
     return (
         <Modal 
         disabled={loading} 
@@ -37,6 +45,7 @@ export default function RegisterModal() {
         actionlabel='Continue' 
         onClose={registerModal.onClose} 
         onSubmit={handleSubmit(onSubmit)}
+        body={bodyContent}
         />
   )
 }

@@ -20,11 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ClientOnly>
-        <RegisterModal />
-        <Navbar />
-      </ClientOnly>
-      <body className={nunito.className}>{children}</body>
+
+      <body className={nunito.className}>
+        <ClientOnly>
+          <RegisterModal />
+            <Navbar />
+        </ClientOnly>
+        {children}</body>
     </html>
   )
 }

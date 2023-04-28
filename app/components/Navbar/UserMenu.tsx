@@ -133,7 +133,7 @@ export function UserMenu ({currentUser}:any){
                 />
                 <MenuItem 
                   label="Sign up" 
-                  onClick={()=>{}}
+                  onClick={registerModal.onOpen}
                 />
               </>
             )}

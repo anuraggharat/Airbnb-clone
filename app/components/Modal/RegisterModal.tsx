@@ -52,8 +52,10 @@ export default function RegisterModal() {
                 label='Continue with Google'
                 icon={FcGoogle}
                 onClick={()=>{}}
+                disabled={loading}
             />
             <Button 
+                disabled={loading}
                 outline
                 label='Continue with Github'
                 icon={AiFillGithub}

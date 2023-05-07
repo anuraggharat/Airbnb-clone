@@ -76,7 +76,7 @@ export default function Modal(props:ModalProps) {
                     <div className='relative flex-auto p-6'>
                         {body}
                     </div>    
-                    <div className='flex flex-col gap-2 px-6'>
+                    <div className='flex flex-col gap-2 px-6 py-3'>
                         <div className='flex flex-row items-center gap-4'>
                             {secondaryAction && secondaryActionLabel && 
                             <Button 

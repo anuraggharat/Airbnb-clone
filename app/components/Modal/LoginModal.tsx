@@ -48,6 +48,10 @@ export default function LoginModal() {
     })
    }     
 
+const toggle = useCallback(()=>{
+    loginModal.onClose();
+    registerModal.onOpen()
+},[loginModal,registerModal])
 
    const bodyContent = (
     <div className='flex flex-col gap-2'>
@@ -76,7 +80,7 @@ export default function LoginModal() {
                 onClick={()=>{signIn('github')}}
             />
             <div className='flex flex-row items-center justify-center text-neutral-500'>
-                <p>Already have an account? <span onClick={registerModal.onClose} className='text-neutral-800 cursor-pointer hover:underline'>Log in</span></p>
+                <p>First time here? <span onClick={toggle} className='text-neutral-800 cursor-pointer hover:underline'>Create an account</span></p>
             </div>
         </div>
     )

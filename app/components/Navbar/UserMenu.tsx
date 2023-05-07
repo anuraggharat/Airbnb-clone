@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-//import useRentModal from "@/app/hooks/useRentModal";
+import useRentModal from "@/app/hooks/useRentModal";
 //import { SafeUser } from "@/app/types";
 import {User} from '@prisma/client'
 
@@ -24,7 +24,7 @@ export function UserMenu ({currentUser}:UserMenuProps){
 
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  //const rentModal = useRentModal();
+  const rentModal = useRentModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,13 +32,15 @@ export function UserMenu ({currentUser}:UserMenuProps){
     setIsOpen((value) => !value);
   }, []);
 
-  // const onRent = useCallback(() => {
-  //   if (!currentUser) {
-  //     return loginModal.onOpen();
-  //   }
+  const onRent = useCallback(() => {
+    //check if user is not present -> tell him  to login
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
 
-  //   rentModal.onOpen();
-  // }, [loginModal, rentModal, currentUser]);
+    //open the rent model
+    rentModal.onOpen();
+  }, [loginModal, rentModal, currentUser]);
 
   return ( 
     <div className="relative">
@@ -119,7 +121,7 @@ export function UserMenu ({currentUser}:UserMenuProps){
                 />
                 <MenuItem 
                   label="Airbnb your home" 
-                  onClick={()=>{}}
+                  onClick={rentModal.onOpen}
                 />
                 <hr />
                 <MenuItem 

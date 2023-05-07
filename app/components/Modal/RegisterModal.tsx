@@ -12,10 +12,12 @@ import Heading from '../Common/Heading'
 import Input from '../Inputs/Input'
 import Button from '../Button/Button'
 import { AiFillGithub } from 'react-icons/ai'
+import useLoginModal from '@/app/hooks/useLoginModal'
 
 export default function RegisterModal() {
   
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [loading,setLoading] = useState(false)
 
     const {register,handleSubmit,formState:{errors}} = useForm<FieldValues>({
@@ -33,7 +35,10 @@ export default function RegisterModal() {
     .catch(()=>(toast.error('Something went wrong')))
     .finally(()=>setLoading(false))
    }     
-
+const toggle = useCallback(()=>{
+    registerModal.onClose();
+    loginModal.onOpen()
+},[loginModal,registerModal])
 
    const bodyContent = (
     <div className='flex flex-col gap-2'>
@@ -63,7 +68,7 @@ export default function RegisterModal() {
                 onClick={()=>{signIn('github')}}
             />
             <div className='flex flex-row items-center justify-center text-neutral-500'>
-                <p>Already have an account? <span onClick={registerModal.onClose} className='text-neutral-800 cursor-pointer hover:underline'>Log in</span></p>
+                <p>Already have an account? <span onClick={toggle} className='text-neutral-800 cursor-pointer hover:underline'>Log in</span></p>
             </div>
         </div>
     )

@@ -201,6 +201,7 @@ export default function RentModal() {
         id='title'
         label='Title'
         disabled={isLoading}
+        required
         />
         <Input
         register={register}
@@ -208,6 +209,7 @@ export default function RentModal() {
         id='description'
         label='Description'
         disabled={isLoading}
+        required
         />
       </div>
     );

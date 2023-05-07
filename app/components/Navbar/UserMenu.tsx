@@ -2,25 +2,27 @@
 
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-//import { signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-//import useLoginModal from "@/app/hooks/useLoginModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 //import useRentModal from "@/app/hooks/useRentModal";
 //import { SafeUser } from "@/app/types";
+import {User} from '@prisma/client'
 
 import MenuItem from "./MenuItem";
 import Avatar from "../Common/Avatar"
+import { SafeUser } from "@/app/types";
 
-// interface UserMenuProps {
-//   currentUser?: SafeUser | null
-// }
+interface UserMenuProps {
+  currentUser?: SafeUser | null
+}
 
-export function UserMenu ({currentUser}:any){
+export function UserMenu ({currentUser}:UserMenuProps){
   const router = useRouter();
 
-  //const loginModal = useLoginModal();
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   //const rentModal = useRentModal();
 
@@ -122,14 +124,15 @@ export function UserMenu ({currentUser}:any){
                 <hr />
                 <MenuItem 
                   label="Logout" 
-                  onClick={() => {}}
+                  onClick={() => signOut()}
                 />
               </>
             ) : (
               <>
                 <MenuItem 
                   label="Login" 
-                  onClick={()=>{}}
+                  onClick={loginModal.onOpen}
+
                 />
                 <MenuItem 
                   label="Sign up" 

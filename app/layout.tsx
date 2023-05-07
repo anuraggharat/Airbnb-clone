@@ -6,6 +6,8 @@ import { Navbar } from './components/Navbar/Navbar'
 import './globals.css'
 import { Nunito } from 'next/font/google'
 import ToastProvider from './providers/ToastProvider'
+import LoginModal from './components/Modal/LoginModal'
+import getCurrentUser from './actions/getCurrentUser'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -14,11 +16,14 @@ export const metadata = {
   description: 'AirBnb Clone using Next.js',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
 
@@ -26,7 +31,8 @@ export default function RootLayout({
         <ClientOnly>
           <ToastProvider />
           <RegisterModal />
-            <Navbar />
+          <LoginModal />
+            <Navbar currentUser={currentUser} />
         </ClientOnly>
         {children}</body>
     </html>

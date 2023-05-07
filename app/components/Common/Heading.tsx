@@ -13,7 +13,7 @@ export default function Heading({center,title,subTitle}:HeadingProps) {
         <div className="text-2xl font-bold">
             {title}
         </div>
-        <div className="font-light text-neutral-500 mt-2">
+        <div className="font-light text-neutral-500">
             {subTitle}
         </div>
     </div>

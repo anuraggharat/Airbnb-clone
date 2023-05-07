@@ -2,7 +2,11 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function Avatar({src}:any) {
+interface AvatarProps {
+  src?:string | null | undefined
+}
+
+export default function Avatar({src}:AvatarProps) {
   return (
     <Image
       className="rounded-full" 

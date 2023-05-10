@@ -32,11 +32,7 @@ interface ListingClientProps {
   currentUser: SafeUser | null;
 }
 
-const ListingClient: React.FC<ListingClientProps> = ({
-  listing,
-  reservations = [],
-  currentUser
-}) => {
+export default function ListingClient ({listing,reservations = [],currentUser}:ListingClientProps){
   const loginModal = useLoginModal();
   const router = useRouter();
 
@@ -79,7 +75,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .then(() => {
         toast.success('Listing reserved!');
         setDateRange(initialDateRange);
-        router.push('/trips');
+        router.push('/');
       })
       .catch(() => {
         toast.error('Something went wrong.');
@@ -171,4 +167,3 @@ const ListingClient: React.FC<ListingClientProps> = ({
    );
 }
  
-export default ListingClient;

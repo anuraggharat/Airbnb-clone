@@ -19,11 +19,11 @@ export default function PropertiesClient({currentUser,listings}:PropertiesClient
     const router = useRouter()
     const [deletingId,setDeletingId] = useState('')
 
-    const onCancel = useCallback((id:string)=>{
+    const onDelete = useCallback((id:string)=>{
         setDeletingId(id)
-        axios.delete(`/api/reservations/${id}`)
+        axios.delete(`/api/listings/${id}`)
         .then(()=>{
-            toast.success("Reservation Cancelled")
+            toast.success("Listing deleted")
             router.refresh()
         })
         .catch(()=>toast.error("Something went wrong"))
@@ -42,6 +42,10 @@ export default function PropertiesClient({currentUser,listings}:PropertiesClient
                 key={listing.id}
                 data={listing}
                 currentUser={currentUser}
+                actionId={listing.id}
+                onAction={onDelete}
+                disabled={deletingId===listing.id}
+                actionLabel="Delete Property"
               />
             
             ))}

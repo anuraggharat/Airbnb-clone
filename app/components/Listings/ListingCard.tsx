@@ -82,18 +82,18 @@ export default function ListingCard({data,reservation,actionId="",actionLabel,cu
             />
           </div>
         </div>
-        <div className="font-semibold text-md">
+        <div className="font-bold text-md">
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500 text-sm">
           {reservationDate || data.category}
         </div>
         <div className="flex flex-row items-center text-sm">
-          <div className="font-semibold">
-            $ {price}
+          <div className="font-medium">
+            $ {price} /
           </div>
           {!reservation && (
-            <div className="font-light">night</div>
+            <div className="font-medium">night</div>
           )}
         </div>
         {onAction && actionLabel && (

@@ -3,16 +3,20 @@ import { Inter } from 'next/font/google'
 import ClientOnly from './components/ClientOnly';
 import Container from './components/Common/Container';
 import EmptyState from './components/Common/EmptyState';
-import getListings from './actions/getlistings';
+import getListings, { IListingParams } from './actions/getlistings';
 import ListingCard from './components/Listings/ListingCard';
 import getCurrentUser from './actions/getCurrentUser';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default async function Home() {
+interface HomeProps {
+  searchParams:IListingParams
+}
+
+export default async function Home({searchParams}:HomeProps) {
 
   const currentUser = await getCurrentUser()
-  const listings =await getListings();
+  const listings =await getListings(searchParams);
    if (listings.length===0) {
     return (
       <ClientOnly>

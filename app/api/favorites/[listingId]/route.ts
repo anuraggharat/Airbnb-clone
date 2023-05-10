@@ -10,6 +10,7 @@ interface IdParams {
 export async function POST(request:Request,{params}:{params:IdParams}){
         const currentUser = await getCurrentUser()
         if(!currentUser){
+            
             return NextResponse.error();
         }
 

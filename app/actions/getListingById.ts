@@ -9,6 +9,7 @@ export default async function getListingById(params:Iparams){
     try {
 
         const {listingId} = params
+        console.log(listingId)
         const listing = await prisma.listing.findUnique({
             where:{
                 id:listingId

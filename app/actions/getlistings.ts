@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismaDb";
 
 export interface IListingParams {
     userId?:string;

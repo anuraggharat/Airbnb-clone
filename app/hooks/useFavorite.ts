@@ -26,16 +26,17 @@ const useFavorite = ({listingId,currentUser}:IuseFavorite) =>{
             return loginModal.onOpen();
         }
         try {
-            let request;
             if (hasFavorited) {
-                request = () => axios.delete(`api/favorites/${listingId}`)
+                axios.delete(`api/favorites/${listingId}`)
+                .then(()=>{toast.success("Listing removed from Favorites")})
+                .catch(()=>{toast.error("Something went wrong!")})
             }
             else{
-                request = () => axios.post(`api/favorites/${listingId}`)
+                axios.post(`api/favorites/${listingId}`)
+                .then(()=>{toast.success("Listing added to Favorites")})
+                .catch(()=>{toast.error("Something went wrong!")})
             }
-            await request()
             router.refresh()
-            toast.success('Success')
         } catch (error) {
             console.log(error)
             toast.error("Something went wrong")

@@ -60,11 +60,11 @@ export default function Modal(props:ModalProps) {
     
 
     return (
-    <div className='justify-center items-center flex overflow-hidden fixed inset-0 z-40 focus:outline-none bg-neutral-800/75'>
+    <div className='justify-center items-center flex overflow-hidden fixed inset-0 z-40 focus:outline-none bg-neutral-800/75'  onClick={handleClose}>
         <div className='relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full lg:h-auto md:h-auto text-sm'>
             <div className={`translate duration-300 h-full ${showModal ? 'translate-y-0' : 'translate-y-full'} ${showModal ? 'opacity-100' : 'opacity-0'} `}>
-                <div className='translate h-full lg:h-auto md:h-auto border-0 shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none rounded'>
-                    <div className='flex items-center p-6 rounded-t justify-center relative border-b-[1px]'>
+                <div className='translate h-full lg:h-auto md:h-auto border-0 shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none rounded' onClick={(e)=>e.stopPropagation()}>
+                    <div className='flex items-center p-6 rounded-t justify-center relative border-b-[1px]' >
                         <button className='p-1 border-0 hover:opacity-70 transition absolute left-10' onClick={handleClose}>
                             <AiOutlineClose />
                         </button>

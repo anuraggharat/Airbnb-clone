@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import React, { useCallback, useMemo } from 'react'
 import HeartButton from '../Common/HeartButton';
 import Button from '../Button/Button';
+import getListingById from '@/app/actions/getListingById';
 
 interface ListingCardProps{
     data:SafeListing;
@@ -84,18 +85,18 @@ export default function ListingCard({data,reservation,actionId="",actionLabel,cu
             />
           </div>
         </div>
-        <div className="font-bold text-md">
-          {location?.region}, {location?.label}
+        <div className="font-bold text-md ">
+       {location?.label}, {location?.region}
         </div>
         <div className="font-light text-neutral-500 text-sm">
           {reservationDate || data.category}
         </div>
         <div className="flex flex-row items-center text-sm">
-          <div className="font-medium">
-            $ {price} /
+          <div className="font-semibold">
+            $ {price}/
           </div>
           {!reservation && (
-            <div className="font-medium">night</div>
+            <div className="font-semibold">night</div>
           )}
         </div>
         {onAction && actionLabel && (

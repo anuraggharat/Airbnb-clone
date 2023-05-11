@@ -110,7 +110,7 @@ export default function Categories() {
     }
 
   return (
-    <div className='pt-4 flex flex-row gap-2 items-center justify-center overflow-x-auto'>
+    <div className='pt-4 flex flex-row gap-2 items-center justify-center overflow-x-auto border-2 border-red-500'>
         {categories.map(item=>(
             <CategoryBox
             key={item.label}

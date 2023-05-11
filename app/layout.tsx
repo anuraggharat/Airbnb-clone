@@ -1,6 +1,5 @@
 
 import ClientOnly from './components/ClientOnly'
-import Modal from './components/Modal/Modal'
 import RegisterModal from './components/Modal/RegisterModal'
 import { Navbar } from './components/Navbar/Navbar'
 import './globals.css'
@@ -11,12 +10,14 @@ import getCurrentUser from './actions/getCurrentUser'
 import RentModal from './components/Modal/RentModal'
 import SearchModal from './components/Modal/SearchModal'
 
-const nunito = Nunito({ subsets: ['latin'] })
 
+const nunito = Nunito({ subsets: ['latin'] })
 export const metadata = {
   title: 'AirBnb Clone',
   description: 'AirBnb Clone using Next.js',
 }
+
+
 
 export default async function RootLayout({
   children,

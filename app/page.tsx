@@ -6,6 +6,7 @@ import EmptyState from './components/Common/EmptyState';
 import getListings, { IListingParams } from './actions/getlistings';
 import ListingCard from './components/Listings/ListingCard';
 import getCurrentUser from './actions/getCurrentUser';
+import SkeletonBox from './components/Skeleton/SkeletonBox';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export default async function Home({searchParams}:HomeProps) {
             {listings.map(listing =>(
               <ListingCard currentUser={currentUser} key={listing.id} data={listing} />
             ))}
+            <SkeletonBox />
         </div>
       </Container>
     </ClientOnly>

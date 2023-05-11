@@ -1,10 +1,30 @@
 'use client'
 
 
-import React from 'react'
+import React, { useEffect } from 'react'
+import Container from './components/Common/Container'
+import EmptyState from './components/Common/EmptyState'
+import ClientOnly from './components/ClientOnly'
 
-export default function error() {
+interface ErrorStateProps {
+  error: Error
+}
+
+export default function error({error}:ErrorStateProps) {
+
+
+  useEffect(()=>{
+    console.error(error)
+  },[error])
+
   return (
-    <div>error</div>
+    <ClientOnly>
+      <Container>
+        <EmptyState
+        title='Opps!!'
+        subtitle='Something went wrong, please load the app again.'
+        />
+      </Container>
+    </ClientOnly>
   )
 }

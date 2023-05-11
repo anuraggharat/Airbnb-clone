@@ -57,6 +57,8 @@ export default function ListingCard({data,reservation,actionId="",actionLabel,cu
 
     },[reservation])
 
+
+
     return (
     <div 
       onClick={() => router.push(`/listings/${data.id}`)} 

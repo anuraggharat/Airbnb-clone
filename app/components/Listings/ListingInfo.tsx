@@ -31,13 +31,15 @@ export default function ListingInfo({bathroomCount,category,description,guestCou
     return (
     <div className='col-span-4 flex flex-col gap-8'>
         <div className='flex flex-col gap-2'>
-            <div className='text-xl font-semibold flex flex-row items-center gap-2'>
-                <div>Hosted by {user?.name}</div>
-                <Avatar src={user?.image} />
+            <div className='flex flex-col gap-2'>
+                <span className='font-bold flex flex-row gap-2 items-center '>
+                    <Avatar src={user?.image} /> {user?.name}
+                </span>
+                <p className='text-sm text-neutral-500'>Property Owned by</p>
             </div>
-            <div className='flex flex-row items-center gap-4 font-light text-neutral-500'>
-                <p>{guestCount} guests</p>
-                <p>{roomCount} rooms</p>
+            <div className='flex flex-row items-center gap-4 font-light mt-2'>
+                <p>{guestCount} guests |</p>
+                <p>{roomCount} rooms |</p>
                 <p>{bathroomCount} bathrooms</p>
             </div>
         </div>
@@ -49,7 +51,7 @@ export default function ListingInfo({bathroomCount,category,description,guestCou
             />
         )}
         <hr/>
-        <div className='text-lg font-light text-neutral-500'>
+        <div className='text-md font-light text-neutral-500'>
             {description}
         </div>
         <hr/>

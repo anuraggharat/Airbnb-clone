@@ -27,7 +27,7 @@ const location = getByValue(locationValue)
         title={title}
         subTitle={`${location?.region}, ${location?.label}`}
         />
-        <div className='w-full h-[60vh] overflow-hidden rounded-xl relative'>
+        <div className='w-full h-screen overflow-hidden rounded-xl relative mt-4'>
             <Image
                 alt='Image'
                 src={imageSrc}

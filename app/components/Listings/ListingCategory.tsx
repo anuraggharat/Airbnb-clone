@@ -13,9 +13,9 @@ export default function ListingCategory({description,icon:Icon,label}:ListingCat
   return (
     <div className='flex flex-col gap-6'>
         <div className='flex flex-row items-center gap-4'>
-            <Icon size={40} className='text-neutral-600' />
-            <div className='flex flex-col text-lg font-semibold'>
-                <div className='text-lg font-semibold'>
+            <Icon size={32} className='text-neutral-600' />
+            <div className='flex flex-col text-md font-semibold'>
+                <div className='text-md font-semibold'>
                     {label}
                 </div>
                 <div className='text-neutral-500 font-light'>

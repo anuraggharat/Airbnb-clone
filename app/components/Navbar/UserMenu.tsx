@@ -14,6 +14,7 @@ import {User} from '@prisma/client'
 import MenuItem from "./MenuItem";
 import Avatar from "../Common/Avatar"
 import { SafeUser } from "@/app/types";
+import { toast } from "react-hot-toast";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null
@@ -42,15 +43,19 @@ export function UserMenu ({currentUser}:UserMenuProps){
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  const signOutUser = () =>{
+      signOut()
+      .then(()=>{toast.success("Logout success")})
+      .catch(()=>{toast.error("Something went wrong")})
+      .finally(()=>{router.refresh()})
+  }
+
   return ( 
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div 
-        onClick={rentModal.onOpen}
-          className="
-            hidden
-            md:block
-            text-sm 
+        onClick={onRent}
+          className="hidden md:block text-sm 
             font-semibold 
             py-3 
             px-4 
@@ -127,7 +132,7 @@ export function UserMenu ({currentUser}:UserMenuProps){
                 <hr />
                 <MenuItem 
                   label="Logout" 
-                  onClick={() => signOut()}
+                  onClick={() => signOutUser()}
                 />
               </>
             ) : (

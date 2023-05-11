@@ -38,12 +38,12 @@ export default function LoginModal() {
     }).then((callback)=>{
         setLoading(false)
         if (callback?.ok) {
-            toast.success('Logged In')
+            toast.success('Login Success!')
             router.refresh();
             loginModal.onClose()
         }
         if (callback?.error) {
-            toast.success(callback.error)
+            toast.success("Something Went wrong!")
         }
     })
    }     

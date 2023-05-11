@@ -31,7 +31,12 @@ export default function RegisterModal() {
    const onSubmit:SubmitHandler<FieldValues> = (data) => {
     setLoading(true)
     axios.post('/api/register',data)
-    .then(()=>{registerModal.onClose()})
+    .then(()=>{
+        registerModal.onClose()
+        toast.success("Account created!")
+        toast.success("Please login using account!")
+        loginModal.onOpen()
+    })
     .catch(()=>(toast.error('Something went wrong')))
     .finally(()=>setLoading(false))
    }     

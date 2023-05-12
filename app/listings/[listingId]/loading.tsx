@@ -9,7 +9,7 @@ export default function loading() {
       <div className="max-w-screen-lg mx-auto">
         <div className="h-20 bg-neutral-200 mb-4 rounded-md animate-pulse">
         </div>
-        <div className='w-full h-screen overflow-hidden rounded-xl mt-4 bg-neutral-200 animate-pulse' >
+        <div className='w-full h-[40vh] md:h-screen xl:h-[60vh]  overflow-hidden rounded-xl mt-4 bg-neutral-200 animate-pulse' >
         </div>
         <div 
             className="grid grid-cols-1 md:grid-cols-2 mt-6 gap-5 " >

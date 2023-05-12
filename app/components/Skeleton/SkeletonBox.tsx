@@ -11,10 +11,10 @@ export default function SkeletonBox() {
         <div className="p-2 bg-neutral-200 rounded-md ">
             {/*first text container*/}
         </div>        
-        <div className="p-1 bg-neutral-200 rounded-sm ">
+        <div className="p-2 bg-neutral-200 rounded-md ">
             {/*second text container*/}
         </div>
-        <div className="p-1 bg-neutral-200 rounded-sm ">
+        <div className="p-2 bg-neutral-200 rounded-md ">
             {/*third text container*/}
 
         </div>

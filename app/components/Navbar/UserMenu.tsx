@@ -27,6 +27,7 @@ export function UserMenu ({currentUser}:UserMenuProps){
   const registerModal = useRegisterModal();
   const rentModal = useRentModal();
 
+  //state of user menu
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -34,6 +35,9 @@ export function UserMenu ({currentUser}:UserMenuProps){
   }, []);
 
   const onRent = useCallback(() => {
+
+        setIsOpen(false)
+
     //check if user is not present -> tell him  to login
     if (!currentUser) {
       return loginModal.onOpen();
@@ -47,7 +51,10 @@ export function UserMenu ({currentUser}:UserMenuProps){
       signOut()
       .then(()=>{toast.success("Logout success")})
       .catch(()=>{toast.error("Something went wrong")})
-      .finally(()=>{router.refresh()})
+      .finally(()=>{
+        setIsOpen(false)
+        router.refresh()
+      })
   }
 
   return ( 

@@ -35,6 +35,7 @@ const ListingReservation: React.FC<
         border-[1px]
       border-neutral-200 
         overflow-hidden
+        shadow-xl
       "
     >
       <div className="

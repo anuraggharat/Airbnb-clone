@@ -112,7 +112,7 @@ export default function ListingClient ({listing,reservations = [],currentUser}:L
     <Container>
       <div 
         className="
-          max-w-screen-lg 
+          max-w-screen-xl
           mx-auto
         "
       >
